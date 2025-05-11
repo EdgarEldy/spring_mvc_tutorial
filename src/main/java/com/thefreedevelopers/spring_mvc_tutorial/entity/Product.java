@@ -1,41 +1,28 @@
 package com.thefreedevelopers.spring_mvc_tutorial.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String productName;
-    private float unitPrice;
-    //Setting ManyToOne relationship to Category
+    private double unitPrice;
+
+    //Add ManyToOne relationship to Category model
     @ManyToOne
-    @JoinColumn(name="categoryId", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    //Constructor
-    public Product() {
+    public Category getCategory() {
+        return category;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(float unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Long getId() {
@@ -46,11 +33,19 @@ public class Product {
         this.id = id;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }
