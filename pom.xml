@@ -54,6 +54,7 @@
     </dependencies>
 
     <build>
+        <finalName>spring-mvc-tutorial</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
