@@ -12,6 +12,19 @@ public class Product {
     private String productName;
     private double unitPrice;
 
+    //Add ManyToOne relationship to Category model
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }
