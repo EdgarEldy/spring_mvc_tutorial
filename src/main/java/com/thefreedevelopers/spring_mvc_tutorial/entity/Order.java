@@ -9,32 +9,18 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    private Integer qty;
+    private Double total;
 
-    // Setting ManyToOne relationship to Customer
-    @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = true)
+    // Add ManyToOne relationship to Customer entity
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    // Setting ManyToOne relationship to Product
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = true)
+    // Add ManyToOne relationship to Product entity
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     public Long getId() {
         return id;
@@ -44,9 +30,21 @@ public class Order {
         this.id = id;
     }
 
-    // Add qty attribute
-    @Column(name = "qty")
-    private Integer qty;
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public Integer getQty() {
         return qty;
@@ -56,20 +54,11 @@ public class Order {
         this.qty = qty;
     }
 
-    // Add total attribute
-    @Column(name = "total")
-    private Double total;
-
     public Double getTotal() {
         return total;
     }
 
     public void setTotal(Double total) {
         this.total = total;
-    }
-
-    // Constructor
-    public Order(){
-
     }
 }
