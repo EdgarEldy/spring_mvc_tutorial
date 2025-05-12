@@ -11,6 +11,11 @@ public class Category {
     private Long id;
     private String categoryName;
 
+    // Create a constructor with categoryName parameter
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Long getId() {
         return id;
     }
