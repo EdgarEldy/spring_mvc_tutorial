@@ -7,35 +7,35 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String productName;
-    private float unitPrice;
-    //Setting ManyToOne relationship to Category
+    private double unitPrice;
+
+    //Add ManyToOne relationship to Category model
     @ManyToOne
-    @JoinColumn(name="categoryId", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    //Constructor
+    // Empty constructor
     public Product() {
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
+    // Constructor with initial values
+    public Product(String productName, double unitPrice, Category category) {
         this.productName = productName;
-    }
-
-    public float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Long getId() {
@@ -46,11 +46,19 @@ public class Product {
         this.id = id;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }

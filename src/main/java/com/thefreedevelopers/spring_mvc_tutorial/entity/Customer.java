@@ -11,14 +11,23 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    // Properties
     private String firstName;
     private String lastName;
     private String Tel;
     private String Email;
     private String Address;
-    // Constructor
+
+    // Empty constructor
     public Customer() {
+    }
+
+    // Constructor with initial values
+    public Customer(String firstName, String lastName, String tel, String email, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.Tel = tel;
+        this.Email = email;
+        this.Address = address;
     }
 
     public Long getId() {
