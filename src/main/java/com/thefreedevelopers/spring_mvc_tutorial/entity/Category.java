@@ -16,6 +16,10 @@ public class Category {
         this.categoryName = categoryName;
     }
 
+    // Empty constructor
+    public Category() {
+    }
+
     public Long getId() {
         return id;
     }
