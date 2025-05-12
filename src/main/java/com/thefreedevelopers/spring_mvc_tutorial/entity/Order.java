@@ -17,6 +17,18 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    // Empty constructor
+    public Order() {
+    }
+
+    // Constructor with initial values
+    public Order(Integer qty, Double total, Customer customer, Product product) {
+        this.qty = qty;
+        this.total = total;
+        this.customer = customer;
+        this.product = product;
+    }
+
     // Add ManyToOne relationship to Product entity
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id", nullable = false)

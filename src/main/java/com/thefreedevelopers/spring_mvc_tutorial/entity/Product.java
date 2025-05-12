@@ -1,6 +1,8 @@
 package com.thefreedevelopers.spring_mvc_tutorial.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -16,6 +18,17 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    // Empty constructor
+    public Product() {
+    }
+
+    // Constructor with initial values
+    public Product(String productName, double unitPrice, Category category) {
+        this.productName = productName;
+        this.unitPrice = unitPrice;
+        this.category = category;
+    }
 
     public Category getCategory() {
         return category;
