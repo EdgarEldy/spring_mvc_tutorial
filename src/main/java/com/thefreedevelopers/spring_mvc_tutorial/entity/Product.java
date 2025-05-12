@@ -17,6 +17,17 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    // Empty constructor
+    public Product() {
+    }
+
+    // Constructor with initial values
+    public Product(String productName, double unitPrice, Category category) {
+        this.productName = productName;
+        this.unitPrice = unitPrice;
+        this.category = category;
+    }
+
     public Category getCategory() {
         return category;
     }
