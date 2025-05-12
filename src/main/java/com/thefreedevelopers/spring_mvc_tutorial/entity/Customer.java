@@ -1,6 +1,8 @@
 package com.thefreedevelopers.spring_mvc_tutorial.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -14,6 +16,19 @@ public class Customer {
     private String Tel;
     private String Email;
     private String Address;
+
+    // Empty constructor
+    public Customer() {
+    }
+
+    // Constructor with initial values
+    public Customer(String firstName, String lastName, String tel, String email, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.Tel = tel;
+        this.Email = email;
+        this.Address = address;
+    }
 
     public Long getId() {
         return id;
@@ -61,5 +76,17 @@ public class Customer {
 
     public void setAddress(String address) {
         Address = address;
+    }
+
+    // Add OneToMany relationship to Order
+    @OneToMany(mappedBy = "customer", orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
